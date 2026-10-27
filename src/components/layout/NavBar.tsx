@@ -21,7 +21,7 @@ export function NavBar() {
       <div className="site-container">
         <nav
           aria-label={site.navLabel}
-          className="relative flex h-15 items-center justify-between gap-3 rounded-nav border border-border bg-surface pr-2 pl-5"
+          className="relative flex h-15 items-center justify-between gap-3 rounded-nav border border-border bg-surface pr-3 pl-5"
         >
           <a
             href="#top"
@@ -58,9 +58,10 @@ export function NavBar() {
               href={contact.resumePath}
               download
               variant="light"
+              size="sm"
               data-event="resume_download"
             >
-              <Download aria-hidden className="size-4" strokeWidth={1.8} />
+              <Download aria-hidden className="size-3.5" strokeWidth={1.8} />
               {site.resumeLabel}
             </Button>
             <MobileMenu links={site.nav} labels={site.menu} active={active} />

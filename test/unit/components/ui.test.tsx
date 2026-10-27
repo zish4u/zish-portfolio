@@ -59,6 +59,18 @@ describe("Button", () => {
     expect(html(<Button>a</Button>)).toContain("h-11");
     expect(html(<Button size="lg">a</Button>)).toContain("h-12");
   });
+
+  it("sm draws a 36px pill inside a 44px hit area", () => {
+    const out = html(
+      <Button href="/cv.pdf" size="sm" variant="light">
+        CV
+      </Button>,
+    );
+    expect(out).toMatch(/^<a href="\/cv.pdf" class="group inline-flex h-11 /);
+    const pill = out.match(/<span class="([^"]*)">CV<\/span>/)?.[1] ?? "";
+    expect(pill.split(" ")).toEqual(expect.arrayContaining(["h-9", "bg-text"]));
+    expect(out).toContain("group-focus-visible:outline-2");
+  });
 });
 
 describe("TagList", () => {

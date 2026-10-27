@@ -2,7 +2,8 @@ import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 type Variant = "primary" | "secondary" | "light";
-type Size = "md" | "lg";
+/** sm draws a 36px button inside a 44px hit area (touch-target rule). */
+type Size = "sm" | "md" | "lg";
 
 type CommonProps = {
   variant?: Variant;
@@ -34,9 +35,13 @@ const variants: Record<Variant, string> = {
 };
 
 const sizes: Record<Size, string> = {
-  md: "h-11 rounded-button px-4",
-  lg: "h-12 rounded-button-lg px-5",
+  sm: "h-9 gap-1.5 rounded-button px-3 text-label-sm",
+  md: "h-11 gap-2 rounded-button px-4 text-label",
+  lg: "h-12 gap-2 rounded-button-lg px-5 text-label",
 };
+
+const base =
+  "inline-flex shrink-0 items-center justify-center font-medium whitespace-nowrap select-none transition-[filter,transform,border-color,color] duration-150 ease-out";
 
 export function Button(props: ButtonProps) {
   const {
@@ -48,13 +53,38 @@ export function Button(props: ButtonProps) {
     ...rest
   } = props;
 
-  const classes = cn(
-    "inline-flex shrink-0 items-center justify-center gap-2 text-label font-medium whitespace-nowrap select-none",
-    "transition-[filter,transform,border-color,color] duration-150 ease-out hover:brightness-108 active:scale-98",
-    stretch && "w-full xs:w-auto",
-    variants[variant],
-    sizes[size],
-    className,
+  // sm: the link/button is a transparent 44px-tall hit area and the visible
+  // 36px pill is an inner span, which also carries hover, press and focus.
+  const compact = size === "sm";
+
+  const classes = compact
+    ? cn(
+        "group inline-flex h-11 shrink-0 items-center focus-visible:outline-none",
+        stretch && "w-full xs:w-auto",
+        className,
+      )
+    : cn(
+        base,
+        "hover:brightness-108 active:scale-98",
+        stretch && "w-full xs:w-auto",
+        variants[variant],
+        sizes[size],
+        className,
+      );
+
+  const content = compact ? (
+    <span
+      className={cn(
+        base,
+        "w-full group-hover:brightness-108 group-focus-visible:outline-2 group-focus-visible:outline-offset-2 group-focus-visible:outline-accent group-active:scale-98",
+        variants[variant],
+        sizes.sm,
+      )}
+    >
+      {children}
+    </span>
+  ) : (
+    children
   );
 
   if (rest.href !== undefined) {
@@ -65,7 +95,7 @@ export function Button(props: ButtonProps) {
         className={classes}
         {...(external && { target: "_blank", rel: "noopener noreferrer" })}
       >
-        {children}
+        {content}
       </a>
     );
   }
@@ -73,7 +103,7 @@ export function Button(props: ButtonProps) {
   const { type = "button", ...buttonProps } = rest;
   return (
     <button {...buttonProps} type={type} className={classes}>
-      {children}
+      {content}
     </button>
   );
 }
