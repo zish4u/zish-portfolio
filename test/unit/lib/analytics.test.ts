@@ -1,8 +1,11 @@
+import { track as vercelTrack } from "@vercel/analytics";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { isAnalyticsEvent, track } from "@/lib/analytics";
 
+vi.mock("@vercel/analytics", () => ({ track: vi.fn() }));
+
 afterEach(() => {
-  vi.unstubAllGlobals();
+  vi.mocked(vercelTrack).mockClear();
 });
 
 describe("isAnalyticsEvent", () => {
@@ -20,34 +23,15 @@ describe("isAnalyticsEvent", () => {
 });
 
 describe("track", () => {
-  it("forwards to Vercel Analytics and GA4 when both are loaded", () => {
-    const va = vi.fn();
-    const gtag = vi.fn();
-    vi.stubGlobal("window", { va, gtag });
-
+  it("forwards the event and its props to Vercel Web Analytics", () => {
     track("contact_click", { channel: "email" });
-
-    expect(va).toHaveBeenCalledWith("event", {
-      name: "contact_click",
-      data: { channel: "email" },
-    });
-    expect(gtag).toHaveBeenCalledWith("event", "contact_click", {
+    expect(vercelTrack).toHaveBeenCalledWith("contact_click", {
       channel: "email",
     });
   });
 
-  it("is a safe no-op when no analytics script is loaded", () => {
-    vi.stubGlobal("window", {});
-    expect(() => track("resume_download")).not.toThrow();
-  });
-
   it("defaults props to an empty object", () => {
-    const va = vi.fn();
-    vi.stubGlobal("window", { va });
     track("resume_download");
-    expect(va).toHaveBeenCalledWith("event", {
-      name: "resume_download",
-      data: {},
-    });
+    expect(vercelTrack).toHaveBeenCalledWith("resume_download", {});
   });
 });

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { JsonLd } from "@/components/layout/JsonLd";
+import { VercelAnalytics } from "@/components/layout/VercelAnalytics";
 import { profile } from "@/content/profile";
 import { site } from "@/content/site";
 import { siteUrl } from "@/lib/siteUrl";
@@ -68,6 +69,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full">
         {children}
         <JsonLd />
+        <VercelAnalytics />
       </body>
     </html>
   );

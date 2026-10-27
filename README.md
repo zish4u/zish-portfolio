@@ -9,7 +9,7 @@ Personal portfolio of **Zishan Faridy, Frontend Engineer** — a single static p
 - **next/font** — Space Grotesk, Inter, JetBrains Mono (self-hosted variable fonts)
 - **lucide-react** icons, inline SVG brand marks
 - **Vitest** unit tests · **Playwright** end-to-end tests · **Lighthouse CI**
-- **GitHub Actions** CI · deployed on **Vercel**
+- **GitHub Actions** CI · deployed on **Vercel** with **Vercel Web Analytics**
 
 ## Getting started
 
