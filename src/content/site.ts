@@ -3,6 +3,13 @@ import type { SiteCopy } from "@/types/content";
 // UI copy that isn't personal data: nav, section headers, labels, CTAs.
 export const site: SiteCopy = {
   wordmark: "zishan.dev",
+  seo: {
+    url: "https://zishan.dev", // [DOMAIN] — confirm before launch
+    title: "Zishan Faridy — Frontend Engineer (React, Next.js, TypeScript)",
+    description:
+      "Frontend Engineer with 6+ years building production web apps in React, Next.js and TypeScript. Open to full-time roles in India and the GCC.",
+    ogAlt: "Zishan Faridy — Frontend Engineer",
+  },
   skipLink: "Skip to content",
   navLabel: "Primary",
   menu: { open: "Open menu", close: "Close menu" },

@@ -8,6 +8,8 @@ type ContactCardProps = {
   icon: ReactNode;
   /** Opens in a new tab with rel="noopener noreferrer". */
   external?: boolean;
+  /** Analytics `contact_click` channel, e.g. "email". */
+  channel: string;
 };
 
 /** The whole card is the link. */
@@ -17,10 +19,13 @@ export function ContactCard({
   value,
   icon,
   external = false,
+  channel,
 }: ContactCardProps) {
   return (
     <a
       href={href}
+      data-event="contact_click"
+      data-channel={channel}
       {...(external && { target: "_blank", rel: "noopener noreferrer" })}
       className="flex min-h-11 items-center gap-4 rounded-card border border-border bg-bg p-4 transition-colors duration-150 ease-out hover:border-border-strong xs:p-5"
     >

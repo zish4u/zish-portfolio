@@ -130,6 +130,13 @@
     color-scheme: dark;
   }
 
+  /* Smooth anchor scrolling, only for users who haven't asked for less motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   body {
     background-color: var(--color-bg);
     color: var(--color-body);

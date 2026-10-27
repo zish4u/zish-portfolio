@@ -8,6 +8,7 @@ import { profile } from "@/content/profile";
 import { site } from "@/content/site";
 
 type Channel = {
+  channel: string;
   href: string;
   label: string;
   value: string;
@@ -27,18 +28,21 @@ export function Contact() {
 
   const channels: Channel[] = [
     {
+      channel: "email",
       href: `mailto:${contact.email}`,
       label: copy.emailLabel,
       value: contact.email,
       icon: <Mail className={iconClass} strokeWidth={1.8} />,
     },
     {
+      channel: "phone",
       href: `tel:${contact.phone.replace(/[^\d+]/g, "")}`,
       label: copy.phoneLabel,
       value: contact.phone,
       icon: <Smartphone className={iconClass} strokeWidth={1.8} />,
     },
     {
+      channel: "linkedin",
       href: contact.linkedin,
       label: copy.linkedinLabel,
       value: displayUrl(contact.linkedin),
@@ -46,6 +50,7 @@ export function Contact() {
       external: true,
     },
     {
+      channel: "github",
       href: contact.github,
       label: copy.githubLabel,
       value: displayUrl(contact.github),
@@ -56,6 +61,7 @@ export function Contact() {
 
   if (contact.whatsapp) {
     channels.push({
+      channel: "whatsapp",
       href: `https://wa.me/${contact.whatsapp.replace(/\D/g, "")}`,
       label: copy.whatsappLabel,
       value: contact.whatsapp,

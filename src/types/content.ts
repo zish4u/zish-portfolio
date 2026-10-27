@@ -76,8 +76,16 @@ export type NavLink = { label: string; href: `#${SectionId}` };
 
 export type SectionCopy = { eyebrow: string; heading: string };
 
+export type Seo = {
+  url: string; // canonical origin, no trailing slash
+  title: string;
+  description: string; // ≤ 160 characters
+  ogAlt: string;
+};
+
 export type SiteCopy = {
   wordmark: string;
+  seo: Seo;
   skipLink: string;
   nav: NavLink[];
   navLabel: string; // aria-label for the primary nav

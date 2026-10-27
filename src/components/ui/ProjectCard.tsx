@@ -18,6 +18,9 @@ type ProjectCardProps = {
   labels: ProjectCardLabels;
 };
 
+/** Source px trimmed from the top and bottom of project screenshots. */
+const EDGE_TRIM = 4;
+
 const cardBase =
   "rounded-feature border border-border bg-surface transition-colors duration-150 ease-out hover:border-border-strong";
 
@@ -44,6 +47,7 @@ function FeaturedCard({ project, labels }: ProjectCardProps) {
         {project.url && (
           <ProjectLink
             href={project.url}
+            project={project.name}
             icon="up-right"
             className="mt-auto pt-8"
           >
@@ -62,15 +66,24 @@ function FeaturedCard({ project, labels }: ProjectCardProps) {
               </span>
             )}
           </div>
-          {/* Fixed box + object-cover: the screenshot never causes layout shift. */}
-          <div className="relative aspect-16/10">
+          {/* Box takes the screenshot's own aspect ratio, so the full width is
+              shown and nothing shifts on load. A few px are trimmed top and
+              bottom to hide capture-edge lines. */}
+          <div
+            className="relative aspect-16/10"
+            style={
+              project.image && {
+                aspectRatio: `${project.image.width} / ${project.image.height - EDGE_TRIM * 2}`,
+              }
+            }
+          >
             {project.image && (
               <Image
                 src={project.image}
                 alt={project.imageAlt ?? ""}
                 fill
                 sizes="(min-width: 900px) 600px, 100vw"
-                className="object-cover object-top"
+                className="object-cover object-center"
               />
             )}
           </div>
@@ -93,7 +106,12 @@ function CompactCard({ project, labels }: ProjectCardProps) {
       <p className="mt-2 text-copy-sm text-body">{project.description}</p>
       <TagList items={project.tags} className="mt-4" />
       {href && (
-        <ProjectLink href={href} icon="right" className="mt-auto pt-5">
+        <ProjectLink
+          href={href}
+          project={project.name}
+          icon="right"
+          className="mt-auto pt-5"
+        >
           {labels.view}
         </ProjectLink>
       )}
@@ -130,11 +148,13 @@ function StatusBadge({
 
 function ProjectLink({
   href,
+  project,
   icon,
   className,
   children,
 }: {
   href: string;
+  project: string;
   icon: "right" | "up-right";
   className?: string;
   children: ReactNode;
@@ -146,6 +166,8 @@ function ProjectLink({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
+        data-event="project_click"
+        data-project={project}
         className="group inline-flex min-h-11 items-center gap-1.5 text-label font-medium text-accent transition-colors duration-150 ease-out hover:text-accent-hover"
       >
         {children}
