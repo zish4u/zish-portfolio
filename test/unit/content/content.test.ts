@@ -121,6 +121,23 @@ describe("projects", () => {
   });
 });
 
+describe("work locations", () => {
+  const gulf = new Set(["UAE", "KSA", "Qatar", "Bahrain", "Kuwait", "Oman"]);
+
+  it("only offers relocation to Gulf countries", () => {
+    for (const country of profile.relocateTo) {
+      expect(gulf.has(country), country).toBe(true);
+    }
+  });
+
+  it("lists remote regions separately from relocation", () => {
+    expect(profile.remote).toEqual(expect.arrayContaining(["Europe", "US"]));
+    for (const region of profile.remote) {
+      expect(profile.relocateTo).not.toContain(region);
+    }
+  });
+});
+
 describe("contact", () => {
   it("has a valid email", () => {
     expect(contact.email).toMatch(/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i);

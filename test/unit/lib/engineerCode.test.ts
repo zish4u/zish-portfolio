@@ -12,8 +12,8 @@ const fixture: Profile = {
   coreStack: ["React"],
   alsoFluent: [],
   basedIn: "London, UK",
-  openTo: ["UK", "EU"],
-  relocate: false,
+  remote: ["Europe", "US"],
+  relocateTo: [],
 };
 
 const text = (lines: CodeLine[]) =>
@@ -30,8 +30,8 @@ describe("engineerCode", () => {
         '  core: ["React"],',
         "  alsoFluent: [],",
         '  basedIn: "London, UK",',
-        '  openTo: ["UK", "EU"],',
-        "  relocate: false,",
+        '  remote: ["Europe", "US"],',
+        "  relocateTo: [],",
         "};",
       ].join("\n"),
     );
@@ -45,7 +45,6 @@ describe("engineerCode", () => {
     expect(kindOf("const")).toBe("keyword");
     expect(kindOf('"Ada Lovelace"')).toBe("string");
     expect(kindOf("3")).toBe("number");
-    expect(kindOf("false")).toBe("number"); // booleans share the number color
     expect(kindOf(" // years")).toBe("comment");
   });
 

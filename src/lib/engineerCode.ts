@@ -48,8 +48,8 @@ export function engineerCode(
     prop("core", list(profile.coreStack)),
     prop("alsoFluent", list(profile.alsoFluent)),
     prop("basedIn", [str(profile.basedIn)]),
-    prop("openTo", list(profile.openTo)),
-    prop("relocate", [{ kind: "number", text: String(profile.relocate) }]),
+    prop("remote", list(profile.remote)),
+    prop("relocateTo", list(profile.relocateTo)),
     [p("};")],
   ];
 }

@@ -8,7 +8,7 @@ export const site: SiteCopy = {
     url: "https://zishanfaridy.vercel.app",
     title: "Zishan Faridy — Frontend Engineer (React, Next.js, TypeScript)",
     description:
-      "Frontend Engineer with 6+ years building production web apps in React, Next.js and TypeScript. Open to full-time roles in India and the GCC.",
+      "Frontend Engineer with 6+ years building production web apps in React, Next.js and TypeScript. Open to India & UAE on-site and global remote roles.",
     ogAlt: "Zishan Faridy — Frontend Engineer",
   },
   skipLink: "Skip to content",
@@ -46,7 +46,7 @@ export const site: SiteCopy = {
     currentlyLabel: "Currently",
     nationalityLabel: "Nationality & visa",
     languagesLabel: "Languages",
-    relocateNote: "open to relocate",
+    relocateNote: "open to relocating to", // followed by profile.relocateTo
   },
   experience: { presentLabel: "Present" },
   work: {
@@ -61,7 +61,7 @@ export const site: SiteCopy = {
     heading: "Hiring a frontend engineer?",
     highlight: "Let’s talk.",
     intro:
-      "Open to full-time roles in India and the Gulf, including relocation. I usually reply within a day.",
+      "Seeking new opportunities. Open to local roles in India, relocation to the UAE, and global remote roles (US/Europe). I usually reply within a day.",
     noticeLabel: "Notice period",
     basedInLabel: "Based in",
     timezoneLabel: "Timezone",

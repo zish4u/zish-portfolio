@@ -15,8 +15,8 @@ export type Profile = {
   nationality: string;
   visaNote?: string; // About nationality card; hidden when omitted
   languages: string[];
-  openTo: string[];
-  relocate: boolean;
+  remote: string[]; // regions open to fully remote roles from, e.g. ["Europe", "US"]
+  relocateTo: string[]; // the only countries open to relocating to; [] = none
   coreStack: string[];
   alsoFluent: string[];
   stackStrip: string[]; // hero stack strip, in display order

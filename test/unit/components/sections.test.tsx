@@ -29,7 +29,9 @@ describe("About", () => {
       `${profile.yearsExperience}<span class="text-accent">+</span>`,
     );
     expect(out).toContain(profile.currently);
-    expect(out).toContain(`${profile.nationality} · open to relocate`);
+    expect(out).toContain(
+      `${profile.nationality} · open to relocating to ${profile.relocateTo.join(", ")}`,
+    );
   });
 });
 

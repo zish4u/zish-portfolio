@@ -5,9 +5,10 @@ import { site } from "@/content/site";
 
 export function About() {
   const labels = site.about;
-  const nationality = profile.relocate
-    ? `${profile.nationality} · ${labels.relocateNote}`
-    : profile.nationality;
+  const nationality =
+    profile.relocateTo.length > 0
+      ? `${profile.nationality} · ${labels.relocateNote} ${profile.relocateTo.join(", ")}`
+      : profile.nationality;
 
   return (
     <Section id="about" copy={site.sections.about}>

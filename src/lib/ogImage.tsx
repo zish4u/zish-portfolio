@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { profile } from "@/content/profile";
-import { site } from "@/content/site";
+import { displayHost } from "@/lib/format";
+import { siteUrl } from "@/lib/siteUrl";
 import { colors } from "@/lib/tokens";
 
 export const ogSize = { width: 1200, height: 630 };
@@ -29,7 +30,8 @@ export function renderOgImage() {
           fontWeight: 700,
         }}
       >
-        {site.wordmark}
+        {/* Site address, not the wordmark: the name is already the headline. */}
+        {displayHost(siteUrl)}
       </div>
 
       <div style={{ display: "flex", flexDirection: "column" }}>
