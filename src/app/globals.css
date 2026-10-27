@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — docs/PRD.md section 4. Values are exact from the approved canvas.
+ * The default Tailwind palette is cleared so colors can only come from these tokens.
+ */
+@theme {
+  --color-*: initial;
+
+  /* Surfaces */
+  --color-bg: #0c0c0f;
+  --color-surface: #131317;
+  --color-surface-2: #1c1c22;
+  --color-surface-3: #18181d;
+
+  /* Borders */
+  --color-border: #27272a;
+  --color-border-strong: #3f3f46;
+
+  /* Text */
+  --color-text: #ededef;
+  --color-body: #a1a1aa;
+  --color-muted: #8e8e98;
+  --color-chip: #d4d4d8;
+  --color-on-accent: #0c0c0f;
+
+  /* Accent + status */
+  --color-accent: #a78bfa;
+  --color-accent-hover: #c4b5fd;
+  --color-success: #4ade80;
+  --color-dot-past: #52525b;
+
+  /* Code card syntax */
+  --color-code-keyword: #c084fc;
+  --color-code-string: #86efac;
+  --color-code-number: #fdba74;
+  --color-code-comment: #8e8e98;
+  --color-code-punctuation: #d4d4d8;
+
+  /* Type scale (size / line-height / tracking / weight) */
+  --text-h1: 4rem;
+  --text-h1--line-height: 1.02;
+  --text-h1--letter-spacing: -0.04em;
+  --text-h1--font-weight: 700;
+  --text-h1-mobile: 2.75rem;
+  --text-h1-mobile--line-height: 1.02;
+  --text-h1-mobile--letter-spacing: -0.04em;
+  --text-h1-mobile--font-weight: 700;
+
+  --text-h2: 2.75rem;
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.03em;
+  --text-h2--font-weight: 700;
+  --text-h2-mobile: 2rem;
+  --text-h2-mobile--line-height: 1.1;
+  --text-h2-mobile--letter-spacing: -0.03em;
+  --text-h2-mobile--font-weight: 700;
+
+  --text-contact: 3.25rem;
+  --text-contact--line-height: 1.05;
+  --text-contact--letter-spacing: -0.035em;
+  --text-contact--font-weight: 700;
+
+  --text-stat: 3.5rem;
+  --text-stat--line-height: 1;
+  --text-stat--letter-spacing: -0.04em;
+  --text-stat--font-weight: 700;
+
+  --text-h3: 1.375rem;
+  --text-h3--letter-spacing: -0.01em;
+  --text-h3--font-weight: 600;
+  --text-h3-featured: 2rem;
+  --text-h3-featured--letter-spacing: -0.01em;
+  --text-h3-featured--font-weight: 700;
+
+  --text-lead: 1.125rem;
+  --text-lead--line-height: 1.65;
+  --text-copy: 1rem;
+  --text-copy--line-height: 1.65;
+  --text-copy-sm: 0.9375rem;
+  --text-copy-sm--line-height: 1.7;
+  --text-label: 0.875rem;
+  --text-label-sm: 0.8125rem;
+  --text-eyebrow: 0.8125rem;
+  --text-tag: 0.75rem;
+  --text-code: 0.875rem;
+  --text-code--line-height: 1.85;
+  --text-code-sm: 0.78125rem;
+  --text-code-sm--line-height: 1.85;
+
+  /* Radius */
+  --radius-tag: 7px;
+  --radius-chip: 8px;
+  --radius-button: 10px;
+  --radius-button-lg: 12px;
+  --radius-nav: 14px;
+  --radius-card: 16px;
+  --radius-feature: 20px;
+  --radius-panel: 24px;
+  --radius-pill: 999px;
+}
+
+/* Font families map to the CSS variables set by next/font in layout.tsx. */
+@theme inline {
+  --font-display: var(--font-space-grotesk);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+  }
+}

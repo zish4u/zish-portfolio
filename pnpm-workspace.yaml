@@ -1,0 +1,6 @@
+allowBuilds:
+  sharp: false
+  unrs-resolver: false
+overrides:
+  # CVE-2026-96889 (Image Optimization RCE) is fixed in sharp >= 0.35.5
+  sharp: ">=0.35.5"
