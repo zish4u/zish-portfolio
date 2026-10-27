@@ -98,6 +98,12 @@
   --radius-feature: 20px;
   --radius-panel: 24px;
   --radius-pill: 999px;
+
+  /* Breakpoints — PRD section 4 responsive table */
+  --breakpoint-*: initial;
+  --breakpoint-xs: 25rem; /* 400px: code card + full-width buttons below */
+  --breakpoint-md: 56.25rem; /* 900px: nav menu, stacked hero below */
+  --breakpoint-xl: 75rem; /* 1200px: full layout */
 }
 
 /* Font families map to the CSS variables set by next/font in layout.tsx. */
@@ -116,5 +122,22 @@
     background-color: var(--color-bg);
     color: var(--color-body);
     font-family: var(--font-sans);
+  }
+
+  /* WCAG: 2px accent focus ring with 2px offset on every interactive element. */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+    }
   }
 }

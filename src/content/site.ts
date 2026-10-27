@@ -19,6 +19,7 @@ export const site: SiteCopy = {
     secondaryCta: "Contact me",
     codeFile: "engineer.ts",
     codeLanguage: "TypeScript",
+    codeExperienceComment: "years, and counting",
   },
   sections: {
     about: { eyebrow: "// about", heading: "Engineering with ownership." },
@@ -34,9 +35,11 @@ export const site: SiteCopy = {
     languagesLabel: "Languages",
     relocateNote: "open to relocate",
   },
+  experience: { presentLabel: "Present" },
   work: {
     liveLabel: "Live",
     inProgressLabel: "In progress",
+    visitLabel: "Visit",
     viewProject: "View project",
   },
   education: { achievementLabel: "Achievement" },

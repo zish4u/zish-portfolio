@@ -51,6 +51,7 @@ export type Project = {
   url?: string;
   repo?: string;
   image?: string;
+  imageAlt?: string;
 };
 
 export type Education = {
@@ -83,6 +84,7 @@ export type SiteCopy = {
     secondaryCta: string;
     codeFile: string;
     codeLanguage: string;
+    codeExperienceComment: string; // trailing comment on the `experience` line
   };
   sections: Record<Exclude<SectionId, "top" | "contact">, SectionCopy>;
   about: {
@@ -92,7 +94,13 @@ export type SiteCopy = {
     languagesLabel: string;
     relocateNote: string;
   };
-  work: { liveLabel: string; inProgressLabel: string; viewProject: string };
+  experience: { presentLabel: string };
+  work: {
+    liveLabel: string;
+    inProgressLabel: string;
+    visitLabel: string; // "Visit" + project host
+    viewProject: string;
+  };
   education: { achievementLabel: string };
   contact: {
     eyebrow: string;
