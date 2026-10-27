@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Fragment } from "react";
 import { Button } from "@/components/ui/Button";
 import { CodeCard } from "@/components/ui/CodeCard";
 import { profile } from "@/content/profile";
@@ -13,9 +14,20 @@ export function Hero() {
       <div className="site-container pt-14 md:pt-28">
         <div className="grid items-center gap-12 md:grid-cols-[1.1fr_1fr] md:gap-14">
           <div>
-            <p className="flex items-center gap-2 font-mono text-tag text-body">
-              <span aria-hidden className="size-1.5 bg-success" />
-              {profile.availability}
+            <p className="flex items-start gap-2 font-mono text-tag text-body">
+              <span
+                aria-hidden
+                className="mt-1.25 size-1.5 shrink-0 bg-success"
+              />
+              {/* Each "•" part stays on one line; wrapping only happens between parts. */}
+              <span>
+                {profile.availability.split(" • ").map((part, i) => (
+                  <Fragment key={part}>
+                    {i > 0 && " • "}
+                    <span className="whitespace-nowrap">{part}</span>
+                  </Fragment>
+                ))}
+              </span>
             </p>
             <h1
               id="top-heading"

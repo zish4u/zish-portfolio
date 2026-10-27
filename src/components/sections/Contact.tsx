@@ -90,7 +90,7 @@ export function Contact() {
             <span className="block">{copy.heading}</span>
             <span className="block text-accent">{copy.highlight}</span>
           </h2>
-          <p className="mt-5 max-w-[30rem] text-copy text-body">{copy.intro}</p>
+          <p className="mt-5 max-w-xl text-copy text-body">{copy.intro}</p>
 
           <ul className="mt-6 flex flex-wrap gap-2">
             <li>

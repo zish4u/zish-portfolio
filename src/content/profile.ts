@@ -3,8 +3,7 @@ import type { Profile } from "@/types/content";
 export const profile: Profile = {
   name: "Zishan Faridy",
   title: "Frontend Engineer",
-  availability:
-    "Open to: India & UAE (On-site/Relocation) • US, Europe & Global (Remote)",
+  availability: "Open to: UAE (relocation) • Global remote (US, Europe)",
   summary:
     "Frontend Engineer with 6+ years building production web apps in React, Next.js and TypeScript — from component architecture to CI/CD and deployment.",
   about: [
@@ -15,8 +14,7 @@ export const profile: Profile = {
   currently: "Senior Frontend Dev, Webpotli",
   basedIn: "Patna, India",
   nationality: "Indian",
-  visaNote:
-    "Visa sponsorship required for UAE relocation; none for remote roles",
+  visaNote: "UAE visa sponsorship required · none for remote",
   languages: ["English", "Hindi", "Urdu"],
   remote: ["US", "Europe", "Global"],
   relocateTo: ["UAE"],
