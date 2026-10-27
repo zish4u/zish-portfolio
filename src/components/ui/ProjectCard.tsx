@@ -53,27 +53,27 @@ function FeaturedCard({ project, labels }: ProjectCardProps) {
       </div>
 
       {/* Browser frame with screenshot; empty until an image is provided. */}
-      <div className="bg-surface-3 pt-8 pl-6 md:pt-14 md:pl-6">
-        <div className="h-full overflow-hidden rounded-tl-button-lg border-t border-l border-border bg-bg">
-          <div className="flex h-9 items-center border-b border-border px-3">
+      <div className="flex items-center bg-surface-3 p-5 xs:p-6 md:p-8">
+        <div className="w-full overflow-hidden rounded-button-lg border border-border bg-bg">
+          <div className="flex h-9 shrink-0 items-center border-b border-border px-3">
             {host && (
               <span className="rounded-tag bg-surface-2 px-2 py-0.5 font-mono text-tag text-muted">
                 {host}
               </span>
             )}
           </div>
-          {project.image ? (
-            <Image
-              src={project.image}
-              alt={project.imageAlt ?? ""}
-              width={1200}
-              height={750}
-              sizes="(min-width: 900px) 600px, 100vw"
-              className="h-auto w-full"
-            />
-          ) : (
-            <div className="aspect-[16/10]" />
-          )}
+          {/* Fixed box + object-cover: the screenshot never causes layout shift. */}
+          <div className="relative aspect-16/10">
+            {project.image && (
+              <Image
+                src={project.image}
+                alt={project.imageAlt ?? ""}
+                fill
+                sizes="(min-width: 900px) 600px, 100vw"
+                className="object-cover object-top"
+              />
+            )}
+          </div>
         </div>
       </div>
     </article>

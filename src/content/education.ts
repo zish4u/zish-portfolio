@@ -3,19 +3,20 @@ import type { Achievement, Education } from "@/types/content";
 export const education: Education[] = [
   {
     degree: "B.Sc. Engineering (Computer Science)",
-    institution: "[UNIVERSITY / COLLEGE]",
-    start: "[YEAR]",
-    end: "[YEAR]",
+    institution:
+      "Maulana Azad College of Engineering & Technology, Patna (Magadh University, Bodh Gaya)",
+    // start: "[YEAR]",
+    // end: "[YEAR]",
   },
   {
     degree: "12th (Intermediate)",
-    institution: "[BOARD / SCHOOL]",
-    end: "[YEAR]",
+    institution: "B.I.E.C., Patna",
+    // end: "[YEAR]",
   },
   {
     degree: "10th (Matriculation)",
-    institution: "[BOARD / SCHOOL]",
-    end: "[YEAR]",
+    institution: "B.S.E.B., Patna",
+    // end: "[YEAR]",
   },
 ];
 

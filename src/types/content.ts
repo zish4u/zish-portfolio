@@ -1,3 +1,5 @@
+import type { StaticImageData } from "next/image";
+
 /** Year and month, e.g. "2023-11". */
 export type YearMonth = `${number}-${number}`;
 
@@ -51,15 +53,16 @@ export type Project = {
   tags: string[];
   url?: string;
   repo?: string;
-  image?: string;
+  image?: StaticImageData; // static import, so dimensions are known at build
   imageAlt?: string;
 };
 
 export type Education = {
   degree: string;
   institution: string;
+  // Optional: the year line on the card is hidden when both are omitted.
   start?: string;
-  end: string;
+  end?: string;
 };
 
 export type Achievement = {

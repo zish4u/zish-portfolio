@@ -12,10 +12,12 @@ export function Education() {
             key={item.degree}
             className="rounded-card border border-border bg-surface p-5 transition-colors duration-150 ease-out hover:border-border-strong xl:p-6"
           >
-            <p className="font-mono text-tag text-muted">
-              {item.start ? `${item.start} — ${item.end}` : item.end}
-            </p>
-            <h3 className="mt-2 text-copy-sm font-semibold text-text">
+            {(item.start || item.end) && (
+              <p className="mb-2 font-mono text-tag text-muted">
+                {[item.start, item.end].filter(Boolean).join(" — ")}
+              </p>
+            )}
+            <h3 className="text-copy-sm font-semibold text-text">
               {item.degree}
             </h3>
             <p className="text-label-sm text-muted">{item.institution}</p>
