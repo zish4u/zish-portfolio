@@ -35,6 +35,11 @@ export function About() {
 
         <BentoCard span={2} label={labels.nationalityLabel}>
           <p className="mt-1 text-label font-medium text-text">{nationality}</p>
+          {profile.visaNote && (
+            <p className="mt-0.5 text-label-sm text-muted">
+              {profile.visaNote}
+            </p>
+          )}
         </BentoCard>
 
         <BentoCard span={2} label={labels.languagesLabel}>

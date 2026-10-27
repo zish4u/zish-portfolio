@@ -13,6 +13,7 @@ export type Profile = {
   currently: string; // About "Currently" card
   basedIn: string;
   nationality: string;
+  visaNote?: string; // About nationality card; hidden when omitted
   languages: string[];
   openTo: string[];
   relocate: boolean;
@@ -30,6 +31,7 @@ export type Contact = {
   resumePath: string;
   noticePeriod: string;
   timezone: string;
+  visa: string;
 };
 
 export type Job = {
@@ -127,6 +129,7 @@ export type SiteCopy = {
     noticeLabel: string;
     basedInLabel: string;
     timezoneLabel: string;
+    visaLabel: string;
     emailLabel: string;
     phoneLabel: string;
     linkedinLabel: string;

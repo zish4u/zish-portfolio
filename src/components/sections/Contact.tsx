@@ -98,6 +98,9 @@ export function Contact() {
             <li>
               <InfoChip label={copy.timezoneLabel} value={contact.timezone} />
             </li>
+            <li>
+              <InfoChip label={copy.visaLabel} value={contact.visa} />
+            </li>
           </ul>
 
           <ul className="mt-10 grid gap-4 md:grid-cols-2">

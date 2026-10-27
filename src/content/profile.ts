@@ -14,6 +14,7 @@ export const profile: Profile = {
   currently: "Senior Frontend Dev, Webpotli",
   basedIn: "Patna, India",
   nationality: "Indian",
+  visaNote: "Visa sponsorship required for roles abroad",
   languages: ["[LANGUAGES]"],
   openTo: ["India", "UAE", "KSA", "Qatar"],
   relocate: true,

@@ -8,4 +8,5 @@ export const contact: Contact = {
   resumePath: "/resume/Zishan-Faridy-Resume.pdf", // [RESUME_PDF] — file not added yet
   noticePeriod: "15 days",
   timezone: "IST (UTC+5:30)",
+  visa: "Sponsorship required",
 };

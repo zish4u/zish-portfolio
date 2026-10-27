@@ -2,7 +2,7 @@ import type { SiteCopy } from "@/types/content";
 
 // UI copy that isn't personal data: nav, section headers, labels, CTAs.
 export const site: SiteCopy = {
-  wordmark: "zishan.dev",
+  wordmark: "ZISHAN FARIDY",
   seo: {
     url: "https://zishan.dev", // [DOMAIN] — confirm before launch
     title: "Zishan Faridy — Frontend Engineer (React, Next.js, TypeScript)",
@@ -43,7 +43,7 @@ export const site: SiteCopy = {
   about: {
     yearsLabel: "Years in production",
     currentlyLabel: "Currently",
-    nationalityLabel: "Nationality",
+    nationalityLabel: "Nationality & visa",
     languagesLabel: "Languages",
     relocateNote: "open to relocate",
   },
@@ -64,6 +64,7 @@ export const site: SiteCopy = {
     noticeLabel: "Notice period",
     basedInLabel: "Based in",
     timezoneLabel: "Timezone",
+    visaLabel: "Visa status",
     emailLabel: "Email",
     phoneLabel: "Mobile",
     linkedinLabel: "LinkedIn",
