@@ -34,13 +34,13 @@ export function Contact() {
       value: contact.email,
       icon: <Mail className={iconClass} strokeWidth={1.8} />,
     },
-    {
-      channel: "phone",
-      href: `tel:${contact.phone.replace(/[^\d+]/g, "")}`,
-      label: copy.phoneLabel,
-      value: contact.phone,
-      icon: <Smartphone className={iconClass} strokeWidth={1.8} />,
-    },
+    // {
+    //   channel: "phone",
+    //   href: `tel:${contact.phone.replace(/[^\d+]/g, "")}`,
+    //   label: copy.phoneLabel,
+    //   value: contact.phone,
+    //   icon: <Smartphone className={iconClass} strokeWidth={1.8} />,
+    // },
     {
       channel: "linkedin",
       href: contact.linkedin,

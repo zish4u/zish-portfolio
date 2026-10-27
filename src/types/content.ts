@@ -24,7 +24,7 @@ export type Profile = {
 
 export type Contact = {
   email: string;
-  phone: string; // E.164, e.g. "+91XXXXXXXXXX"
+  // phone: string; // E.164, e.g. "+91XXXXXXXXXX"
   linkedin: string;
   github: string;
   whatsapp?: string;
