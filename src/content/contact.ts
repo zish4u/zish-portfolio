@@ -5,7 +5,7 @@ export const contact: Contact = {
   phone: "[+91 XXXXX XXXXX]",
   linkedin: "https://linkedin.com/in/zishan-faridy-b483b848",
   github: "https://github.com/zish4u",
-  resumePath: "/resume/Zishan-Faridy-Resume.pdf", // [RESUME_PDF] — file not added yet
+  resumePath: "/resume/ZishanFaridy_CV.pdf",
   noticePeriod: "15 days",
   timezone: "IST (UTC+5:30)",
   visa: "Sponsorship required",

@@ -137,7 +137,7 @@ describe("contact", () => {
     expect(contact.github).toMatch(/^https:\/\/github\.com\/.+/);
   });
 
-  it("points the résumé at a PDF under /resume/", () => {
+  it("points the resume at a PDF under /resume/", () => {
     expect(contact.resumePath).toMatch(/^\/resume\/.+\.pdf$/);
   });
 });

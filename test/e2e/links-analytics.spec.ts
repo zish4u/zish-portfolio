@@ -1,24 +1,22 @@
+import { contact } from "../../src/content/contact";
 import { expect, test } from "./fixtures";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/");
 });
 
-test("résumé button downloads the PDF path", async ({ page }) => {
-  const resume = page.getByRole("link", { name: "Résumé" });
-  await expect(resume).toHaveAttribute(
-    "href",
-    "/resume/Zishan-Faridy-Resume.pdf",
-  );
+test("resume button downloads the PDF path", async ({ page }) => {
+  const resume = page.getByRole("link", { name: "Resume" });
+  await expect(resume).toHaveAttribute("href", contact.resumePath);
   await expect(resume).toHaveAttribute("download", "");
 });
 
-test("résumé PDF is served", async ({ request }) => {
+test("resume PDF is served", async ({ request }) => {
   test.skip(
     !process.env.LAUNCH_CHECK,
     "launch gate: add the PDF, then LAUNCH_CHECK=1",
   );
-  const res = await request.get("/resume/Zishan-Faridy-Resume.pdf");
+  const res = await request.get(contact.resumePath);
   expect(res.ok()).toBe(true);
   expect(res.headers()["content-type"]).toContain("pdf");
 });
@@ -26,17 +24,17 @@ test("résumé PDF is served", async ({ request }) => {
 test("contact cards use mailto/tel and open profiles safely", async ({
   page,
 }) => {
-  const contact = page.locator("#contact");
-  await expect(contact.locator("a[data-channel=email]")).toHaveAttribute(
+  const section = page.locator("#contact");
+  await expect(section.locator("a[data-channel=email]")).toHaveAttribute(
     "href",
     /^mailto:.+@.+/,
   );
-  await expect(contact.locator("a[data-channel=phone]")).toHaveAttribute(
+  await expect(section.locator("a[data-channel=phone]")).toHaveAttribute(
     "href",
     /^tel:\+\d{10,15}$/,
   );
   for (const channel of ["linkedin", "github"]) {
-    const link = contact.locator(`a[data-channel=${channel}]`);
+    const link = section.locator(`a[data-channel=${channel}]`);
     await expect(link).toHaveAttribute("href", /^https:\/\//);
     await expect(link).toHaveAttribute("target", "_blank");
   }

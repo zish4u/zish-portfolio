@@ -1,4 +1,7 @@
+import { site } from "../../src/content/site";
 import { expect, test } from "./fixtures";
+
+const origin = site.seo.url; // VERCEL_PROJECT_PRODUCTION_URL is unset in tests
 
 // SEO output is identical across viewports; run it once.
 test.skip(({ isMobile }) => isMobile, "desktop only");
@@ -15,7 +18,7 @@ test("head has description, canonical, Open Graph, Twitter and icons", async ({
 
   await expect(head.locator("link[rel=canonical]")).toHaveAttribute(
     "href",
-    "https://zishan.dev",
+    origin,
   );
   await expect(head.locator("meta[property='og:type']")).toHaveAttribute(
     "content",
@@ -87,11 +90,11 @@ test.describe("generated assets", () => {
   }) => {
     const robots = await (await request.get("/robots.txt")).text();
     expect(robots).toContain("Allow: /");
-    expect(robots).toContain("Sitemap: https://zishan.dev/sitemap.xml");
+    expect(robots).toContain(`Sitemap: ${origin}/sitemap.xml`);
   });
 
   test("sitemap lists the home page", async ({ request }) => {
     const sitemap = await (await request.get("/sitemap.xml")).text();
-    expect(sitemap).toContain("<loc>https://zishan.dev/</loc>");
+    expect(sitemap).toContain(`<loc>${origin}/</loc>`);
   });
 });

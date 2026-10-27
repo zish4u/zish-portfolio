@@ -4,7 +4,8 @@ import type { SiteCopy } from "@/types/content";
 export const site: SiteCopy = {
   wordmark: "ZISHAN FARIDY",
   seo: {
-    url: "https://zishan.dev", // [DOMAIN] — confirm before launch
+    // Fallback only: on Vercel the production domain is used (lib/siteUrl.ts).
+    url: "https://zishanfaridy.vercel.app",
     title: "Zishan Faridy — Frontend Engineer (React, Next.js, TypeScript)",
     description:
       "Frontend Engineer with 6+ years building production web apps in React, Next.js and TypeScript. Open to full-time roles in India and the GCC.",
@@ -20,7 +21,7 @@ export const site: SiteCopy = {
     { label: "Work", href: "#work" },
     { label: "Contact", href: "#contact" },
   ],
-  resumeLabel: "Résumé",
+  resumeLabel: "Resume",
   hero: {
     greeting: "Hi, I’m Zishan.",
     lead: "I engineer interfaces that",

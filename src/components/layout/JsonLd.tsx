@@ -1,6 +1,6 @@
 import { contact } from "@/content/contact";
 import { profile } from "@/content/profile";
-import { site } from "@/content/site";
+import { siteUrl } from "@/lib/siteUrl";
 
 /** schema.org Person (PRD §2 SEO). */
 export function JsonLd() {
@@ -10,7 +10,7 @@ export function JsonLd() {
     "@type": "Person",
     name: profile.name,
     jobTitle: profile.title,
-    url: site.seo.url,
+    url: siteUrl,
     email: `mailto:${contact.email}`,
     sameAs: [contact.linkedin, contact.github],
     address: {

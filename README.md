@@ -31,7 +31,7 @@ pnpm dev          # http://localhost:3000
 | `pnpm test:e2e`  | Playwright on the production build (desktop + mobile) |
 | `pnpm test:all`  | Both test suites                                      |
 
-Set `LAUNCH_CHECK=1` to also run the launch gates (no `[PLACEHOLDER]` text left, résumé PDF served).
+Set `LAUNCH_CHECK=1` to also run the launch gates (no `[PLACEHOLDER]` text left, resume PDF served).
 
 ## Project structure
 

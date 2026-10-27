@@ -15,7 +15,7 @@ export const profile: Profile = {
   basedIn: "Patna, India",
   nationality: "Indian",
   visaNote: "Visa sponsorship required for roles abroad",
-  languages: ["[LANGUAGES]"],
+  languages: ["English", "Hindi", "Urdu"],
   openTo: ["India", "UAE", "KSA", "Qatar"],
   relocate: true,
   coreStack: ["React", "Next.js", "TypeScript"],

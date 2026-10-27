@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { JsonLd } from "@/components/layout/JsonLd";
 import { profile } from "@/content/profile";
 import { site } from "@/content/site";
+import { siteUrl } from "@/lib/siteUrl";
 import { colors } from "@/lib/tokens";
 import "./globals.css";
 
@@ -31,10 +32,10 @@ const { seo } = site;
 // OG/Twitter images, icons, sitemap and robots come from file conventions in
 // this folder; Next links them automatically.
 export const metadata: Metadata = {
-  metadataBase: new URL(seo.url),
+  metadataBase: new URL(siteUrl),
   title: seo.title,
   description: seo.description,
-  authors: [{ name: profile.name, url: seo.url }],
+  authors: [{ name: profile.name, url: siteUrl }],
   alternates: { canonical: "/" },
   openGraph: {
     type: "profile",
