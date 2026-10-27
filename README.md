@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# zishan.dev
 
-## Getting Started
+Personal portfolio of **Zishan Faridy, Frontend Engineer** — a single static page built with the same stack it describes.
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router, fully static) · **React 19** · **TypeScript** (strict)
+- **Tailwind CSS v4** with design tokens in `@theme` (`src/app/globals.css`)
+- **next/font** — Space Grotesk, Inter, JetBrains Mono (self-hosted variable fonts)
+- **lucide-react** icons, inline SVG brand marks
+- **Vitest** unit tests · **Playwright** end-to-end tests · **Lighthouse CI**
+- **GitHub Actions** CI · deployed on **Vercel**
+
+## Getting started
+
+Requires Node.js ≥ 24.22.1 and pnpm.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev          # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Command          | What it does                                          |
+| ---------------- | ----------------------------------------------------- |
+| `pnpm dev`       | Local dev server                                      |
+| `pnpm build`     | Production build (static)                             |
+| `pnpm lint`      | ESLint                                                |
+| `pnpm typecheck` | Generates route types, then `tsc --noEmit`            |
+| `pnpm format`    | Prettier (with Tailwind class sorting)                |
+| `pnpm test`      | Vitest unit + component tests                         |
+| `pnpm test:e2e`  | Playwright on the production build (desktop + mobile) |
+| `pnpm test:all`  | Both test suites                                      |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Set `LAUNCH_CHECK=1` to also run the launch gates (no `[PLACEHOLDER]` text left, résumé PDF served).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+src/
+  app/            layout, page, metadata, OG image, icons, sitemap, robots
+  components/
+    layout/       NavBar, MobileMenu, SkipLink, Section, Footer, JsonLd
+    sections/     Hero, About, Experience, Skills, Work, Education, Contact
+    ui/           Button, Tag, SectionHeader, CodeCard, cards, InfoChip
+  content/        all copy and personal data (typed)
+  hooks/          useActiveSection, useClickTracking
+  lib/            formatting, analytics, engineer.ts code generator
+  types/          content types
+test/
+  unit/           Vitest: helpers, components, content rules
+  e2e/            Playwright: smoke, navigation, links/analytics, responsive, SEO
+```
 
-To learn more about Next.js, take a look at the following resources:
+**Editing content:** everything on the page comes from `src/content/*.ts`, typed by `src/types/content.ts`. Components never hard-code copy. The hero's `engineer.ts` card is generated from `profile.ts` at build time, so it can't drift from the rest of the page.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Quality
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Accessibility:** WCAG 2.1 AA — one `h1`, landmarks, skip link, visible 2px focus ring, 44px touch targets, keyboard-operable mobile menu with focus trap, `prefers-reduced-motion` respected.
+- **Tests:** content rules (title, wording, ordering, bullet length) are enforced in unit tests; the e2e suite covers layout from 360px to 1440px, the mobile menu, analytics events and SEO output.
+- **CI:** every push runs format, lint, typecheck, unit tests, build, e2e and Lighthouse (mobile, median of 3 runs).

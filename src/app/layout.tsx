@@ -6,25 +6,24 @@ import { site } from "@/content/site";
 import { colors } from "@/lib/tokens";
 import "./globals.css";
 
+// All three are variable fonts: omitting `weight` loads one file per family
+// (3 requests) instead of one per weight (8), which matters on slow mobile.
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
   display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
   display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
-  weight: ["400", "500"],
-  display: "swap",
+  display: "optional",
 });
 
 const { seo } = site;
