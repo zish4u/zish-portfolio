@@ -11,6 +11,7 @@ export const profile: Profile = {
     "I’m comfortable across the delivery chain — Node.js APIs, Docker, GitHub Actions and cloud hosting — and I use Claude Code to move faster while reviewing every change for quality.",
   ],
   yearsExperience: 6,
+  currently: "Senior Frontend Dev, Webpotli",
   basedIn: "Patna, India",
   nationality: "Indian",
   languages: ["[LANGUAGES]"],

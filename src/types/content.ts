@@ -8,6 +8,7 @@ export type Profile = {
   summary: string; // one-line hero summary
   about: string[]; // About bento paragraphs
   yearsExperience: number;
+  currently: string; // About "Currently" card
   basedIn: string;
   nationality: string;
   languages: string[];
@@ -74,7 +75,10 @@ export type SectionCopy = { eyebrow: string; heading: string };
 
 export type SiteCopy = {
   wordmark: string;
+  skipLink: string;
   nav: NavLink[];
+  navLabel: string; // aria-label for the primary nav
+  menu: { open: string; close: string };
   resumeLabel: string;
   hero: {
     greeting: string;
@@ -85,6 +89,8 @@ export type SiteCopy = {
     codeFile: string;
     codeLanguage: string;
     codeExperienceComment: string; // trailing comment on the `experience` line
+    codeLabel: string; // aria-label for the code card figure
+    stackLabel: string; // aria-label for the stack strip
   };
   sections: Record<Exclude<SectionId, "top" | "contact">, SectionCopy>;
   about: {
@@ -114,6 +120,7 @@ export type SiteCopy = {
     phoneLabel: string;
     linkedinLabel: string;
     githubLabel: string;
+    whatsappLabel: string;
   };
   footer: { builtWith: string };
 };

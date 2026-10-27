@@ -3,6 +3,9 @@ import type { SiteCopy } from "@/types/content";
 // UI copy that isn't personal data: nav, section headers, labels, CTAs.
 export const site: SiteCopy = {
   wordmark: "zishan.dev",
+  skipLink: "Skip to content",
+  navLabel: "Primary",
+  menu: { open: "Open menu", close: "Close menu" },
   nav: [
     { label: "About", href: "#about" },
     { label: "Experience", href: "#experience" },
@@ -20,6 +23,8 @@ export const site: SiteCopy = {
     codeFile: "engineer.ts",
     codeLanguage: "TypeScript",
     codeExperienceComment: "years, and counting",
+    codeLabel: "Profile summary written as a TypeScript object",
+    stackLabel: "Core stack",
   },
   sections: {
     about: { eyebrow: "// about", heading: "Engineering with ownership." },
@@ -56,6 +61,7 @@ export const site: SiteCopy = {
     phoneLabel: "Mobile",
     linkedinLabel: "LinkedIn",
     githubLabel: "GitHub",
+    whatsappLabel: "WhatsApp",
   },
   footer: { builtWith: "built with next.js + tailwind" },
 };
