@@ -24,7 +24,7 @@ export type Profile = {
 
 export type Contact = {
   email: string;
-  // phone: string; // E.164, e.g. "+91XXXXXXXXXX"
+  phone?: string; // optional; the Mobile card is hidden when omitted
   linkedin: string;
   github: string;
   whatsapp?: string;

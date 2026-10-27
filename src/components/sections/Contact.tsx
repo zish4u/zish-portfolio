@@ -34,13 +34,17 @@ export function Contact() {
       value: contact.email,
       icon: <Mail className={iconClass} strokeWidth={1.8} />,
     },
-    // {
-    //   channel: "phone",
-    //   href: `tel:${contact.phone.replace(/[^\d+]/g, "")}`,
-    //   label: copy.phoneLabel,
-    //   value: contact.phone,
-    //   icon: <Smartphone className={iconClass} strokeWidth={1.8} />,
-    // },
+    ...(contact.phone
+      ? [
+          {
+            channel: "phone",
+            href: `tel:${contact.phone.replace(/[^\d+]/g, "")}`,
+            label: copy.phoneLabel,
+            value: contact.phone,
+            icon: <Smartphone className={iconClass} strokeWidth={1.8} />,
+          },
+        ]
+      : []),
     {
       channel: "linkedin",
       href: contact.linkedin,
@@ -105,7 +109,8 @@ export function Contact() {
 
           <ul className="mt-10 grid gap-4 md:grid-cols-2">
             {channels.map((channel) => (
-              <li key={channel.label}>
+              // An odd last card spans both columns so it never sits alone.
+              <li key={channel.label} className="md:last:odd:col-span-2">
                 <ContactCard {...channel} />
               </li>
             ))}

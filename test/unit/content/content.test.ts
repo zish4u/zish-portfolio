@@ -126,9 +126,12 @@ describe("contact", () => {
     expect(contact.email).toMatch(/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i);
   });
 
-  it("has a dialable international phone number", () => {
-    expect(contact.phone.replace(/[^\d+]/g, "")).toMatch(/^\+\d{10,15}$/);
-  });
+  it.skipIf(!contact.phone)(
+    "has a dialable international phone number (when shown)",
+    () => {
+      expect(contact.phone!.replace(/[^\d+]/g, "")).toMatch(/^\+\d{10,15}$/);
+    },
+  );
 
   it("has https LinkedIn and GitHub profile URLs", () => {
     expect(contact.linkedin).toMatch(

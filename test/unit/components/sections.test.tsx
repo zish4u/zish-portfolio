@@ -67,13 +67,17 @@ describe("Education", () => {
 describe("Contact", () => {
   const out = renderToStaticMarkup(<Contact />);
 
-  it("builds mailto and tel links from contact.ts", () => {
+  it("builds the mailto link from contact.ts", () => {
     expect(out).toContain(`href="mailto:${contact.email}"`);
-    expect(out).toContain(`href="tel:${contact.phone.replace(/[^\d+]/g, "")}"`);
+  });
+
+  it("shows a phone (tel:) card only when a number is configured", () => {
+    expect(out.includes('href="tel:')).toBe(Boolean(contact.phone));
+    expect(out.includes('data-channel="phone"')).toBe(Boolean(contact.phone));
   });
 
   it("tracks a contact_click channel on every card", () => {
-    for (const channel of ["email", "phone", "linkedin", "github"]) {
+    for (const channel of ["email", "linkedin", "github"]) {
       expect(out).toContain(`data-channel="${channel}"`);
     }
   });

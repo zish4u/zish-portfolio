@@ -29,10 +29,15 @@ test("contact cards use mailto/tel and open profiles safely", async ({
     "href",
     /^mailto:.+@.+/,
   );
-  await expect(section.locator("a[data-channel=phone]")).toHaveAttribute(
-    "href",
-    /^tel:\+\d{10,15}$/,
-  );
+  if (contact.phone) {
+    await expect(section.locator("a[data-channel=phone]")).toHaveAttribute(
+      "href",
+      /^tel:\+\d{10,15}$/,
+    );
+  } else {
+    // Number kept private: no tel: link anywhere on the page.
+    await expect(page.locator("a[href^='tel:']")).toHaveCount(0);
+  }
   for (const channel of ["linkedin", "github"]) {
     const link = section.locator(`a[data-channel=${channel}]`);
     await expect(link).toHaveAttribute("href", /^https:\/\//);
@@ -60,8 +65,12 @@ test("analytics events fire with their props (PRD FR 7)", async ({ page }) => {
     window.addEventListener("click", (event) => event.preventDefault());
   });
 
+  const channels = contact.phone
+    ? ["email", "phone", "linkedin", "github"]
+    : ["email", "linkedin", "github"];
+
   await page.locator("a[data-event=resume_download]").click();
-  for (const channel of ["email", "phone", "linkedin", "github"]) {
+  for (const channel of channels) {
     await page.locator(`a[data-channel=${channel}]`).click();
   }
   await page.locator("a[data-event=project_click]").first().click();
@@ -71,10 +80,10 @@ test("analytics events fire with their props (PRD FR 7)", async ({ page }) => {
   );
   expect(events).toEqual([
     { name: "resume_download", data: {} },
-    { name: "contact_click", data: { channel: "email" } },
-    { name: "contact_click", data: { channel: "phone" } },
-    { name: "contact_click", data: { channel: "linkedin" } },
-    { name: "contact_click", data: { channel: "github" } },
+    ...channels.map((channel) => ({
+      name: "contact_click",
+      data: { channel },
+    })),
     { name: "project_click", data: { project: "CalQ" } },
   ]);
 });
